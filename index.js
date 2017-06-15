@@ -6,11 +6,21 @@ const store = require('./store')
 const app = express()
 app.use(express.static('public'))
 app.use(bodyParser.json())
-app.post('/createUser', (req, res) => {
-  store
-    .createUser({
-      username: req.body.username,
-      password: req.body.password
+// app.post('/createUser', (req, res) => {
+//   store
+//     .createUser({
+//       username: req.body.username,
+//       password: req.body.password
+//     })
+//     .then(() => res.sendStatus(200))
+// })
+
+app.post('/submitHumTemp', (req, res) => {
+  console.log(req.body.humidity)
+  store.
+    submitHumTemp({
+      humidity: req.body.humidity,
+      temperature: req.body.temperature
     })
     .then(() => res.sendStatus(200))
 })
